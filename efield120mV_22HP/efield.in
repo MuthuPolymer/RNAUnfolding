@@ -1,0 +1,464 @@
+################ RNA with tail translocation under electric field ##########
+clear
+
+##Initialization
+##---------------------------------
+units lj
+dimension 3
+atom_style full
+boundary p p f
+
+##Atom definition
+##---------------------------------
+read_data efield.data
+
+## Force definition
+##---------------------------------
+## Bond definition
+bond_style harmonic
+bond_coeff 1 5343.75 1.2
+
+## Angle definition
+angle_style cosine/squared
+angle_coeff 1 250.0 105.0
+angle_coeff 2 250.0 105.0
+
+special_bonds	lj/coul 0 1 1 angle yes dihedral yes
+dielectric 80.0
+## Pair definition
+##---------------------------------
+pair_style hybrid/overlay lj/cut 2.5 coul/debye 0.639 15.649 gauss 15.0
+pair_modify	shift yes
+pair_coeff 1 1 lj/cut 1.0 1.2 1.347
+pair_coeff 1 2 lj/cut 1.0 1.2 1.347
+pair_coeff 2 2 lj/cut 1.0 1.2 1.347
+pair_coeff 1 3 lj/cut 1.0 1.2 1.347
+pair_coeff 2 3 lj/cut 1.0 1.2 1.347
+pair_coeff 3 3 lj/cut 1.0 1.2 1.347
+pair_coeff 1 4 lj/cut 1.0 1.2 1.347
+pair_coeff 2 4 lj/cut 1.0 1.2 1.347
+pair_coeff 3 4 lj/cut 1.0 1.2 1.347
+pair_coeff 4 4 lj/cut 1.0 1.2 1.347
+pair_coeff 4 4 gauss 33.06 0.1
+pair_coeff 1 5 lj/cut 1.0 1.2 1.347
+pair_coeff 2 5 lj/cut 1.0 1.2 1.347
+pair_coeff 3 5 lj/cut 1.0 1.2 1.347
+pair_coeff 4 5 lj/cut 1.0 1.2 1.347
+pair_coeff 5 5 lj/cut 1.0 1.2 1.347
+pair_coeff 5 5 gauss 33.06 0.1
+pair_coeff 1 6 lj/cut 1.0 1.2 1.347
+pair_coeff 2 6 lj/cut 1.0 1.2 1.347
+pair_coeff 3 6 lj/cut 1.0 1.2 1.347
+pair_coeff 4 6 lj/cut 1.0 1.2 1.347
+pair_coeff 5 6 lj/cut 1.0 1.2 1.347
+pair_coeff 6 6 lj/cut 1.0 1.2 1.347
+pair_coeff 6 6 gauss 33.06 0.1
+pair_coeff 1 7 lj/cut 1.0 1.2 1.347
+pair_coeff 2 7 lj/cut 1.0 1.2 1.347
+pair_coeff 3 7 lj/cut 1.0 1.2 1.347
+pair_coeff 4 7 lj/cut 1.0 1.2 1.347
+pair_coeff 5 7 lj/cut 1.0 1.2 1.347
+pair_coeff 6 7 lj/cut 1.0 1.2 1.347
+pair_coeff 7 7 lj/cut 1.0 1.2 1.347
+pair_coeff 7 7 gauss 33.06 0.1
+pair_coeff 1 8 lj/cut 1.0 1.2 1.347
+pair_coeff 2 8 lj/cut 1.0 1.2 1.347
+pair_coeff 3 8 lj/cut 1.0 1.2 1.347
+pair_coeff 4 8 lj/cut 1.0 1.2 1.347
+pair_coeff 5 8 lj/cut 1.0 1.2 1.347
+pair_coeff 6 8 lj/cut 1.0 1.2 1.347
+pair_coeff 7 8 lj/cut 1.0 1.2 1.347
+pair_coeff 8 8 lj/cut 1.0 1.2 1.347
+pair_coeff 8 8 gauss 33.06 0.1
+pair_coeff 1 9 lj/cut 1.0 1.2 1.347
+pair_coeff 2 9 lj/cut 1.0 1.2 1.347
+pair_coeff 3 9 lj/cut 1.0 1.2 1.347
+pair_coeff 4 9 lj/cut 1.0 1.2 1.347
+pair_coeff 5 9 lj/cut 1.0 1.2 1.347
+pair_coeff 6 9 lj/cut 1.0 1.2 1.347
+pair_coeff 7 9 lj/cut 1.0 1.2 1.347
+pair_coeff 8 9 lj/cut 1.0 1.2 1.347
+pair_coeff 9 9 lj/cut 1.0 1.2 1.347
+pair_coeff 9 9 gauss 33.06 0.1
+pair_coeff 1 10 lj/cut 1.0 1.2 1.347
+pair_coeff 2 10 lj/cut 1.0 1.2 1.347
+pair_coeff 3 10 lj/cut 1.0 1.2 1.347
+pair_coeff 4 10 lj/cut 1.0 1.2 1.347
+pair_coeff 5 10 lj/cut 1.0 1.2 1.347
+pair_coeff 6 10 lj/cut 1.0 1.2 1.347
+pair_coeff 7 10 lj/cut 1.0 1.2 1.347
+pair_coeff 8 10 lj/cut 1.0 1.2 1.347
+pair_coeff 9 10 lj/cut 1.0 1.2 1.347
+pair_coeff 10 10 lj/cut 1.0 1.2 1.347
+pair_coeff 10 10 gauss 33.06 0.1
+pair_coeff 1 11 lj/cut 1.0 1.2 1.347
+pair_coeff 2 11 lj/cut 1.0 1.2 1.347
+pair_coeff 3 11 lj/cut 1.0 1.2 1.347
+pair_coeff 4 11 lj/cut 1.0 1.2 1.347
+pair_coeff 5 11 lj/cut 1.0 1.2 1.347
+pair_coeff 6 11 lj/cut 1.0 1.2 1.347
+pair_coeff 7 11 lj/cut 1.0 1.2 1.347
+pair_coeff 8 11 lj/cut 1.0 1.2 1.347
+pair_coeff 9 11 lj/cut 1.0 1.2 1.347
+pair_coeff 10 11 lj/cut 1.0 1.2 1.347
+pair_coeff 11 11 lj/cut 1.0 1.2 1.347
+pair_coeff 11 11 gauss 33.06 0.1
+pair_coeff 1 12 lj/cut 1.0 1.2 1.347
+pair_coeff 2 12 lj/cut 1.0 1.2 1.347
+pair_coeff 3 12 lj/cut 1.0 1.2 1.347
+pair_coeff 4 12 lj/cut 1.0 1.2 1.347
+pair_coeff 5 12 lj/cut 1.0 1.2 1.347
+pair_coeff 6 12 lj/cut 1.0 1.2 1.347
+pair_coeff 7 12 lj/cut 1.0 1.2 1.347
+pair_coeff 8 12 lj/cut 1.0 1.2 1.347
+pair_coeff 9 12 lj/cut 1.0 1.2 1.347
+pair_coeff 10 12 lj/cut 1.0 1.2 1.347
+pair_coeff 11 12 lj/cut 1.0 1.2 1.347
+pair_coeff 12 12 lj/cut 1.0 1.2 1.347
+pair_coeff 12 12 gauss 33.06 0.1
+pair_coeff 1 13 lj/cut 1.0 1.2 1.347
+pair_coeff 2 13 lj/cut 1.0 1.2 1.347
+pair_coeff 3 13 lj/cut 1.0 1.2 1.347
+pair_coeff 4 13 lj/cut 1.0 1.2 1.347
+pair_coeff 5 13 lj/cut 1.0 1.2 1.347
+pair_coeff 6 13 lj/cut 1.0 1.2 1.347
+pair_coeff 7 13 lj/cut 1.0 1.2 1.347
+pair_coeff 8 13 lj/cut 1.0 1.2 1.347
+pair_coeff 9 13 lj/cut 1.0 1.2 1.347
+pair_coeff 10 13 lj/cut 1.0 1.2 1.347
+pair_coeff 11 13 lj/cut 1.0 1.2 1.347
+pair_coeff 12 13 lj/cut 1.0 1.2 1.347
+pair_coeff 13 13 lj/cut 1.0 1.2 1.347
+pair_coeff 13 13 gauss 33.06 0.1
+pair_coeff 1 14 lj/cut 1.0 1.2 1.347
+pair_coeff 2 14 lj/cut 1.0 1.2 1.347
+pair_coeff 3 14 lj/cut 1.0 1.2 1.347
+pair_coeff 4 14 lj/cut 1.0 1.2 1.347
+pair_coeff 5 14 lj/cut 1.0 1.2 1.347
+pair_coeff 6 14 lj/cut 1.0 1.2 1.347
+pair_coeff 7 14 lj/cut 1.0 1.2 1.347
+pair_coeff 8 14 lj/cut 1.0 1.2 1.347
+pair_coeff 9 14 lj/cut 1.0 1.2 1.347
+pair_coeff 10 14 lj/cut 1.0 1.2 1.347
+pair_coeff 11 14 lj/cut 1.0 1.2 1.347
+pair_coeff 12 14 lj/cut 1.0 1.2 1.347
+pair_coeff 13 14 lj/cut 1.0 1.2 1.347
+pair_coeff 14 14 lj/cut 1.0 1.2 1.347
+pair_coeff 14 14 gauss 33.06 0.1
+pair_coeff 1 15 lj/cut 1.0 1.2 1.347
+pair_coeff 2 15 lj/cut 1.0 1.2 1.347
+pair_coeff 3 15 lj/cut 1.0 1.2 1.347
+pair_coeff 4 15 lj/cut 1.0 1.2 1.347
+pair_coeff 5 15 lj/cut 1.0 1.2 1.347
+pair_coeff 6 15 lj/cut 1.0 1.2 1.347
+pair_coeff 7 15 lj/cut 1.0 1.2 1.347
+pair_coeff 8 15 lj/cut 1.0 1.2 1.347
+pair_coeff 9 15 lj/cut 1.0 1.2 1.347
+pair_coeff 10 15 lj/cut 1.0 1.2 1.347
+pair_coeff 11 15 lj/cut 1.0 1.2 1.347
+pair_coeff 12 15 lj/cut 1.0 1.2 1.347
+pair_coeff 13 15 lj/cut 1.0 1.2 1.347
+pair_coeff 14 15 lj/cut 1.0 1.2 1.347
+pair_coeff 15 15 lj/cut 1.0 1.2 1.347
+pair_coeff 15 15 gauss 33.06 0.1
+pair_coeff 1 16 lj/cut 1.0 1.2 1.347
+pair_coeff 2 16 lj/cut 1.0 1.2 1.347
+pair_coeff 3 16 lj/cut 1.0 1.2 1.347
+pair_coeff 4 16 lj/cut 1.0 1.2 1.347
+pair_coeff 5 16 lj/cut 1.0 1.2 1.347
+pair_coeff 6 16 lj/cut 1.0 1.2 1.347
+pair_coeff 7 16 lj/cut 1.0 1.2 1.347
+pair_coeff 8 16 lj/cut 1.0 1.2 1.347
+pair_coeff 9 16 lj/cut 1.0 1.2 1.347
+pair_coeff 10 16 lj/cut 1.0 1.2 1.347
+pair_coeff 11 16 lj/cut 1.0 1.2 1.347
+pair_coeff 12 16 lj/cut 1.0 1.2 1.347
+pair_coeff 13 16 lj/cut 1.0 1.2 1.347
+pair_coeff 14 16 lj/cut 1.0 1.2 1.347
+pair_coeff 15 16 lj/cut 1.0 1.2 1.347
+pair_coeff 16 16 lj/cut 1.0 1.2 1.347
+pair_coeff 16 16 gauss 33.06 0.1
+pair_coeff 1 17 lj/cut 1.0 1.2 1.347
+pair_coeff 2 17 lj/cut 1.0 1.2 1.347
+pair_coeff 3 17 lj/cut 1.0 1.2 1.347
+pair_coeff 4 17 lj/cut 1.0 1.2 1.347
+pair_coeff 5 17 lj/cut 1.0 1.2 1.347
+pair_coeff 6 17 lj/cut 1.0 1.2 1.347
+pair_coeff 7 17 lj/cut 1.0 1.2 1.347
+pair_coeff 8 17 lj/cut 1.0 1.2 1.347
+pair_coeff 9 17 lj/cut 1.0 1.2 1.347
+pair_coeff 10 17 lj/cut 1.0 1.2 1.347
+pair_coeff 11 17 lj/cut 1.0 1.2 1.347
+pair_coeff 12 17 lj/cut 1.0 1.2 1.347
+pair_coeff 13 17 lj/cut 1.0 1.2 1.347
+pair_coeff 14 17 lj/cut 1.0 1.2 1.347
+pair_coeff 15 17 lj/cut 1.0 1.2 1.347
+pair_coeff 16 17 lj/cut 1.0 1.2 1.347
+pair_coeff 17 17 lj/cut 1.0 1.2 1.347
+pair_coeff 17 17 gauss 33.06 0.1
+pair_coeff 1 18 lj/cut 1.0 1.2 1.347
+pair_coeff 2 18 lj/cut 1.0 1.2 1.347
+pair_coeff 3 18 lj/cut 1.0 1.2 1.347
+pair_coeff 4 18 lj/cut 1.0 1.2 1.347
+pair_coeff 5 18 lj/cut 1.0 1.2 1.347
+pair_coeff 6 18 lj/cut 1.0 1.2 1.347
+pair_coeff 7 18 lj/cut 1.0 1.2 1.347
+pair_coeff 8 18 lj/cut 1.0 1.2 1.347
+pair_coeff 9 18 lj/cut 1.0 1.2 1.347
+pair_coeff 10 18 lj/cut 1.0 1.2 1.347
+pair_coeff 11 18 lj/cut 1.0 1.2 1.347
+pair_coeff 12 18 lj/cut 1.0 1.2 1.347
+pair_coeff 13 18 lj/cut 1.0 1.2 1.347
+pair_coeff 14 18 lj/cut 1.0 1.2 1.347
+pair_coeff 15 18 lj/cut 1.0 1.2 1.347
+pair_coeff 16 18 lj/cut 1.0 1.2 1.347
+pair_coeff 17 18 lj/cut 1.0 1.2 1.347
+pair_coeff 18 18 lj/cut 1.0 1.2 1.347
+pair_coeff 18 18 gauss 33.06 0.1
+pair_coeff 1 19 lj/cut 1.0 1.2 1.347
+pair_coeff 2 19 lj/cut 1.0 1.2 1.347
+pair_coeff 3 19 lj/cut 1.0 1.2 1.347
+pair_coeff 4 19 lj/cut 1.0 1.2 1.347
+pair_coeff 5 19 lj/cut 1.0 1.2 1.347
+pair_coeff 6 19 lj/cut 1.0 1.2 1.347
+pair_coeff 7 19 lj/cut 1.0 1.2 1.347
+pair_coeff 8 19 lj/cut 1.0 1.2 1.347
+pair_coeff 9 19 lj/cut 1.0 1.2 1.347
+pair_coeff 10 19 lj/cut 1.0 1.2 1.347
+pair_coeff 11 19 lj/cut 1.0 1.2 1.347
+pair_coeff 12 19 lj/cut 1.0 1.2 1.347
+pair_coeff 13 19 lj/cut 1.0 1.2 1.347
+pair_coeff 14 19 lj/cut 1.0 1.2 1.347
+pair_coeff 15 19 lj/cut 1.0 1.2 1.347
+pair_coeff 16 19 lj/cut 1.0 1.2 1.347
+pair_coeff 17 19 lj/cut 1.0 1.2 1.347
+pair_coeff 18 19 lj/cut 1.0 1.2 1.347
+pair_coeff 19 19 lj/cut 1.0 1.2 1.347
+pair_coeff 19 19 gauss 33.06 0.1
+pair_coeff 1 20 lj/cut 1.0 1.2 1.347
+pair_coeff 2 20 lj/cut 1.0 1.2 1.347
+pair_coeff 3 20 lj/cut 1.0 1.2 1.347
+pair_coeff 4 20 lj/cut 1.0 1.2 1.347
+pair_coeff 5 20 lj/cut 1.0 1.2 1.347
+pair_coeff 6 20 lj/cut 1.0 1.2 1.347
+pair_coeff 7 20 lj/cut 1.0 1.2 1.347
+pair_coeff 8 20 lj/cut 1.0 1.2 1.347
+pair_coeff 9 20 lj/cut 1.0 1.2 1.347
+pair_coeff 10 20 lj/cut 1.0 1.2 1.347
+pair_coeff 11 20 lj/cut 1.0 1.2 1.347
+pair_coeff 12 20 lj/cut 1.0 1.2 1.347
+pair_coeff 13 20 lj/cut 1.0 1.2 1.347
+pair_coeff 14 20 lj/cut 1.0 1.2 1.347
+pair_coeff 15 20 lj/cut 1.0 1.2 1.347
+pair_coeff 16 20 lj/cut 1.0 1.2 1.347
+pair_coeff 17 20 lj/cut 1.0 1.2 1.347
+pair_coeff 18 20 lj/cut 1.0 1.2 1.347
+pair_coeff 19 20 lj/cut 1.0 1.2 1.347
+pair_coeff 20 20 lj/cut 1.0 1.2 1.347
+pair_coeff 20 20 gauss 33.06 0.1
+pair_coeff 1 21 lj/cut 1.0 1.2 1.347
+pair_coeff 2 21 lj/cut 1.0 1.2 1.347
+pair_coeff 3 21 lj/cut 1.0 1.2 1.347
+pair_coeff 4 21 lj/cut 1.0 1.2 1.347
+pair_coeff 5 21 lj/cut 1.0 1.2 1.347
+pair_coeff 6 21 lj/cut 1.0 1.2 1.347
+pair_coeff 7 21 lj/cut 1.0 1.2 1.347
+pair_coeff 8 21 lj/cut 1.0 1.2 1.347
+pair_coeff 9 21 lj/cut 1.0 1.2 1.347
+pair_coeff 10 21 lj/cut 1.0 1.2 1.347
+pair_coeff 11 21 lj/cut 1.0 1.2 1.347
+pair_coeff 12 21 lj/cut 1.0 1.2 1.347
+pair_coeff 13 21 lj/cut 1.0 1.2 1.347
+pair_coeff 14 21 lj/cut 1.0 1.2 1.347
+pair_coeff 15 21 lj/cut 1.0 1.2 1.347
+pair_coeff 16 21 lj/cut 1.0 1.2 1.347
+pair_coeff 17 21 lj/cut 1.0 1.2 1.347
+pair_coeff 18 21 lj/cut 1.0 1.2 1.347
+pair_coeff 19 21 lj/cut 1.0 1.2 1.347
+pair_coeff 20 21 lj/cut 1.0 1.2 1.347
+pair_coeff 21 21 lj/cut 1.0 1.2 1.347
+pair_coeff 21 21 gauss 33.06 0.1
+pair_coeff 1 22 lj/cut 1.0 1.2 1.347
+pair_coeff 2 22 lj/cut 1.0 1.2 1.347
+pair_coeff 3 22 lj/cut 1.0 1.2 1.347
+pair_coeff 4 22 lj/cut 1.0 1.2 1.347
+pair_coeff 5 22 lj/cut 1.0 1.2 1.347
+pair_coeff 6 22 lj/cut 1.0 1.2 1.347
+pair_coeff 7 22 lj/cut 1.0 1.2 1.347
+pair_coeff 8 22 lj/cut 1.0 1.2 1.347
+pair_coeff 9 22 lj/cut 1.0 1.2 1.347
+pair_coeff 10 22 lj/cut 1.0 1.2 1.347
+pair_coeff 11 22 lj/cut 1.0 1.2 1.347
+pair_coeff 12 22 lj/cut 1.0 1.2 1.347
+pair_coeff 13 22 lj/cut 1.0 1.2 1.347
+pair_coeff 14 22 lj/cut 1.0 1.2 1.347
+pair_coeff 15 22 lj/cut 1.0 1.2 1.347
+pair_coeff 16 22 lj/cut 1.0 1.2 1.347
+pair_coeff 17 22 lj/cut 1.0 1.2 1.347
+pair_coeff 18 22 lj/cut 1.0 1.2 1.347
+pair_coeff 19 22 lj/cut 1.0 1.2 1.347
+pair_coeff 20 22 lj/cut 1.0 1.2 1.347
+pair_coeff 21 22 lj/cut 1.0 1.2 1.347
+pair_coeff 22 22 lj/cut 1.0 1.2 1.347
+pair_coeff 22 22 gauss 33.06 0.1
+pair_coeff 1 23 lj/cut 1.0 1.2 1.347
+pair_coeff 2 23 lj/cut 1.0 1.2 1.347
+pair_coeff 3 23 lj/cut 1.0 1.2 1.347
+pair_coeff 4 23 lj/cut 1.0 1.2 1.347
+pair_coeff 5 23 lj/cut 1.0 1.2 1.347
+pair_coeff 6 23 lj/cut 1.0 1.2 1.347
+pair_coeff 7 23 lj/cut 1.0 1.2 1.347
+pair_coeff 8 23 lj/cut 1.0 1.2 1.347
+pair_coeff 9 23 lj/cut 1.0 1.2 1.347
+pair_coeff 10 23 lj/cut 1.0 1.2 1.347
+pair_coeff 11 23 lj/cut 1.0 1.2 1.347
+pair_coeff 12 23 lj/cut 1.0 1.2 1.347
+pair_coeff 13 23 lj/cut 1.0 1.2 1.347
+pair_coeff 14 23 lj/cut 1.0 1.2 1.347
+pair_coeff 15 23 lj/cut 1.0 1.2 1.347
+pair_coeff 16 23 lj/cut 1.0 1.2 1.347
+pair_coeff 17 23 lj/cut 1.0 1.2 1.347
+pair_coeff 18 23 lj/cut 1.0 1.2 1.347
+pair_coeff 19 23 lj/cut 1.0 1.2 1.347
+pair_coeff 20 23 lj/cut 1.0 1.2 1.347
+pair_coeff 21 23 lj/cut 1.0 1.2 1.347
+pair_coeff 22 23 lj/cut 1.0 1.2 1.347
+pair_coeff 23 23 lj/cut 1.0 1.2 1.347
+pair_coeff 23 23 gauss 33.06 0.1
+pair_coeff 1 24 lj/cut 1.0 1.2 1.347
+pair_coeff 2 24 lj/cut 1.0 1.2 1.347
+pair_coeff 3 24 lj/cut 1.0 1.2 1.347
+pair_coeff 4 24 lj/cut 1.0 1.2 1.347
+pair_coeff 5 24 lj/cut 1.0 1.2 1.347
+pair_coeff 6 24 lj/cut 1.0 1.2 1.347
+pair_coeff 7 24 lj/cut 1.0 1.2 1.347
+pair_coeff 8 24 lj/cut 1.0 1.2 1.347
+pair_coeff 9 24 lj/cut 1.0 1.2 1.347
+pair_coeff 10 24 lj/cut 1.0 1.2 1.347
+pair_coeff 11 24 lj/cut 1.0 1.2 1.347
+pair_coeff 12 24 lj/cut 1.0 1.2 1.347
+pair_coeff 13 24 lj/cut 1.0 1.2 1.347
+pair_coeff 14 24 lj/cut 1.0 1.2 1.347
+pair_coeff 15 24 lj/cut 1.0 1.2 1.347
+pair_coeff 16 24 lj/cut 1.0 1.2 1.347
+pair_coeff 17 24 lj/cut 1.0 1.2 1.347
+pair_coeff 18 24 lj/cut 1.0 1.2 1.347
+pair_coeff 19 24 lj/cut 1.0 1.2 1.347
+pair_coeff 20 24 lj/cut 1.0 1.2 1.347
+pair_coeff 21 24 lj/cut 1.0 1.2 1.347
+pair_coeff 22 24 lj/cut 1.0 1.2 1.347
+pair_coeff 23 24 lj/cut 1.0 1.2 1.347
+pair_coeff 24 24 lj/cut 1.0 1.2 1.347
+pair_coeff 24 24 gauss 33.06 0.1
+pair_coeff 1 25 lj/cut 1.0 1.2 1.347
+pair_coeff 2 25 lj/cut 1.0 1.2 1.347
+pair_coeff 3 25 lj/cut 1.0 1.2 1.347
+pair_coeff 4 25 lj/cut 1.0 1.2 1.347
+pair_coeff 5 25 lj/cut 1.0 1.2 1.347
+pair_coeff 6 25 lj/cut 1.0 1.2 1.347
+pair_coeff 7 25 lj/cut 1.0 1.2 1.347
+pair_coeff 8 25 lj/cut 1.0 1.2 1.347
+pair_coeff 9 25 lj/cut 1.0 1.2 1.347
+pair_coeff 10 25 lj/cut 1.0 1.2 1.347
+pair_coeff 11 25 lj/cut 1.0 1.2 1.347
+pair_coeff 12 25 lj/cut 1.0 1.2 1.347
+pair_coeff 13 25 lj/cut 1.0 1.2 1.347
+pair_coeff 14 25 lj/cut 1.0 1.2 1.347
+pair_coeff 15 25 lj/cut 1.0 1.2 1.347
+pair_coeff 16 25 lj/cut 1.0 1.2 1.347
+pair_coeff 17 25 lj/cut 1.0 1.2 1.347
+pair_coeff 18 25 lj/cut 1.0 1.2 1.347
+pair_coeff 19 25 lj/cut 1.0 1.2 1.347
+pair_coeff 20 25 lj/cut 1.0 1.2 1.347
+pair_coeff 21 25 lj/cut 1.0 1.2 1.347
+pair_coeff 22 25 lj/cut 1.0 1.2 1.347
+pair_coeff 23 25 lj/cut 1.0 1.2 1.347
+pair_coeff 24 25 lj/cut 1.0 1.2 1.347
+pair_coeff 25 25 lj/cut 1.0 1.2 1.347
+pair_coeff 25 25 gauss 33.06 0.1
+pair_coeff 1 26 lj/cut 1.0 1.2 1.347
+pair_coeff 2 26 lj/cut 1.0 1.2 1.347
+pair_coeff 3 26 lj/cut 1.0 1.2 1.347
+pair_coeff 4 26 lj/cut 1.0 1.2 1.347
+pair_coeff 5 26 lj/cut 1.0 1.2 1.347
+pair_coeff 6 26 lj/cut 1.0 1.2 1.347
+pair_coeff 7 26 lj/cut 1.0 1.2 1.347
+pair_coeff 8 26 lj/cut 1.0 1.2 1.347
+pair_coeff 9 26 lj/cut 1.0 1.2 1.347
+pair_coeff 10 26 lj/cut 1.0 1.2 1.347
+pair_coeff 11 26 lj/cut 1.0 1.2 1.347
+pair_coeff 12 26 lj/cut 1.0 1.2 1.347
+pair_coeff 13 26 lj/cut 1.0 1.2 1.347
+pair_coeff 14 26 lj/cut 1.0 1.2 1.347
+pair_coeff 15 26 lj/cut 1.0 1.2 1.347
+pair_coeff 16 26 lj/cut 1.0 1.2 1.347
+pair_coeff 17 26 lj/cut 1.0 1.2 1.347
+pair_coeff 18 26 lj/cut 1.0 1.2 1.347
+pair_coeff 19 26 lj/cut 1.0 1.2 1.347
+pair_coeff 20 26 lj/cut 1.0 1.2 1.347
+pair_coeff 21 26 lj/cut 1.0 1.2 1.347
+pair_coeff 22 26 lj/cut 1.0 1.2 1.347
+pair_coeff 23 26 lj/cut 1.0 1.2 1.347
+pair_coeff 24 26 lj/cut 1.0 1.2 1.347
+pair_coeff 25 26 lj/cut 1.0 1.2 1.347
+pair_coeff 26 26 lj/cut 1.0 1.2 1.347
+pair_coeff 26 26 gauss 33.06 0.1
+pair_coeff 1 1 coul/debye
+
+#Group Definition 
+#---------------------------------------------------------
+group		mobile molecule <> 1 72
+group		pore molecule <> 73 73
+#Neighbor Modify 
+#-------------------------------------------------------
+neigh_modify	exclude type 26 26
+
+
+#Timestep etc
+#-----------------------------------------------
+timestep                0.000187082869339
+run_style               verlet
+velocity                mobile create 2.9 39129
+
+#Variable Definitions 
+#----------------------------------------------
+variable  y1 equal z[1]
+variable  y2 equal z[4]
+variable  y3 equal z[7]
+variable  y4 equal z[10]
+variable  y5 equal z[13]
+variable  y6 equal z[16]
+variable  y7 equal z[19]
+variable  y8 equal z[22]
+variable  y9 equal z[25]
+variable  y10 equal z[28]
+variable  y11 equal z[216]
+
+variable  b1 equal -10.0
+variable  b2 equal 15.0
+
+variable  e1 equal 0.0
+variable  e2 equal 0.0
+variable  e3 equal 0.0267895001625
+
+variable field atom ((v_e3*((x>-2.0)&&(x<2.0)&&(y>-2.0)&&(y<2.0)&&(z>-10.0)&&(z<10.0))))
+
+#Fix
+#------------------------------------------
+fix 2 mobile nve molecule
+fix 3 mobile langevin 2.9 2.9 1.0 30888
+fix ef mobile efield 0.0 0.0 v_field
+
+#Computes
+#----------------------------------------------
+compute  rr  mobile  gyration
+#Dump
+#----------------------------------------------
+thermo_style            custom step temp evdwl ecoul ebond eangle pe ke etotal c_rr 
+thermo          1000
+dump  1 mobile custom 5000 translocate.lammpstrj id mol type x y z 
+dump  5 mobile xyz 1000 dump.xyz
+
+run  50000000  every 1000 "if '${y1}<${b1} && ${y2}<${b1} && ${y3}<${b1} && ${y4}<${b1} && ${y5}<${b1} && ${y6}<${b1} && ${y7}<${b1} && ${y8}<${b1} && ${y9}<${b1} && ${y10}<${b1} || ${y11}>${b2} ' then quit"
+
+#----------End-----------
